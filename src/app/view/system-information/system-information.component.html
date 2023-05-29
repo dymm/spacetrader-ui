@@ -1,0 +1,12 @@
+<h1>System Waypoints</h1>
+<div *ngIf="system; else noSystem">
+    <span>System {{system.symbol}}</span>
+    <span>Type {{system.type}}</span>
+    <div *ngFor="let waypoint of system.waypoints">
+        <<span>Waypoint {{waypoint.symbol}}</span>
+        <span>Type {{waypoint.type}}</span>>
+    </div>  
+</div>
+<ng-template #noSystem>
+    <span>No system selected</span>
+</ng-template>

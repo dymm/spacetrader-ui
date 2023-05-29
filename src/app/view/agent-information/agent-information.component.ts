@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
-import { AgentDataService } from '../services/agent-data-service.service';
+import { filter, switchMap } from 'rxjs/operators';
+import { AgentDataService } from '@base/services/agent-data-service.service';
 import { Agent, AgentsService } from 'spacetraders-angular-client';
 
 @Component({
-  selector: 'app-agent-login',
-  templateUrl: './agent-login.component.html',
-  styleUrls: ['./agent-login.component.css']
+  selector: 'app-agent-information',
+  templateUrl: './agent-information.component.html',
+  styleUrls: ['./agent-information.component.css']
 })
-export class AgentLoginComponent implements OnInit {
+export class AgentInformationComponent implements OnInit {
 
     agent: Agent | undefined;
 
@@ -20,16 +20,17 @@ export class AgentLoginComponent implements OnInit {
     ngOnInit(): void {
       this.agentDataService.getAgentLoggedObservable()
       .pipe(
+        filter((isLogged) => isLogged),
         switchMap(() => this.agentService.getMyAgent())
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this.agent = response.data;
         },
-        (err) => {
+        error: (err) => {
           this.agent = undefined;
         }
-      );
+      });
     }
 
     submit(token: string) {

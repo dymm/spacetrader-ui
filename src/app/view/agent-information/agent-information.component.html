@@ -1,5 +1,6 @@
 <div *ngIf="agent; else tokenNotSet">
-    Connected as {{agent.accountId}}
+    <div>Connected as {{agent.symbol}}</div>
+    <div>Credits: {{agent.credits}}</div>
 </div>
 <ng-template #tokenNotSet>
     <label for="agentName">Agent Name:</label>

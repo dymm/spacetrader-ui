@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DefaultService } from 'spacetraders-angular-client';
-import { AgentDataService } from '../services/agent-data-service.service';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-server-status',
@@ -20,26 +18,21 @@ export class ServerStatusComponent implements OnInit {
     version: string | undefined;
 
   constructor(
-    private agentDataService: AgentDataService,
     private defaultService: DefaultService
   ) { }
 
   ngOnInit(): void {
-    this.agentDataService.getAgentLoggedObservable()
-    .pipe(
-      switchMap(() => this.defaultService.getStatus())
-    )
-    .subscribe(
-      (status) => {
+    this.defaultService.getStatus()
+    .subscribe({
+      next: (status) => {
         this.status = status.status;
         this.version = status.version;
       },
-      (err) => {
+      error: (err) => {
         this.status = undefined;
         this.version = undefined;
       }
-    );
+    });
   }
-
 }
 

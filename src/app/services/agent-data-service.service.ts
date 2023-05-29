@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DefaultService } from 'spacetraders-angular-client';
+import { Agent, AgentsService } from 'spacetraders-angular-client';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,11 @@ import { DefaultService } from 'spacetraders-angular-client';
 export class AgentDataService {
 
   private agentIsLogged$ = new BehaviorSubject<boolean>(false);
+  private agent$ = new BehaviorSubject<Agent | undefined>(undefined);
   private _agentToken: string = '';
 
   constructor(
-    private defaultService: DefaultService
+    private agentService: AgentsService
   ) { }
 
   get agentToken(): string {
@@ -22,21 +23,28 @@ export class AgentDataService {
     return this.agentIsLogged$.asObservable();
   }
 
+  getAgentObservable(): Observable<Agent | undefined> {
+    return this.agent$.asObservable();
+  }
+
   setAgentToken(token: string) {
     console.log('setAgentToken');
     this._agentToken = token;
-    this.defaultService.getStatus()
+    this.agentService.getMyAgent()
     .subscribe(
-      (status) => {
-        console.log('Token submission result : ', status);
-        this._agentToken = token;
-        this.agentIsLogged$.next(true);
-      },
-      (err) => {
-        console.log('Token submission error : ', err);
-        this._agentToken = '';
-        this.agentIsLogged$.next(false);
-      }
-    );
+      {
+        next: (response) => {
+          console.log('Token submission result : ', response.data);
+          this._agentToken = token;
+          this.agentIsLogged$.next(true);
+          this.agent$.next(response.data);
+        },
+        error: (err) => {
+          console.log('Token submission error : ', err);
+          this._agentToken = '';
+          this.agentIsLogged$.next(false);
+          this.agent$.next(undefined);
+        }
+      });
   }
 }

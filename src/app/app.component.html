@@ -1,2 +1,12 @@
-<app-agent-login></app-agent-login>
-<app-server-status></app-server-status>
+<header>
+    <app-agent-information></app-agent-information>
+</header>
+
+<div *ngIf="agent">
+    <app-system-information></app-system-information>
+    <app-waypoint-list [location]="agent.headquarters"></app-waypoint-list>
+</div>
+
+<footer>
+    <app-server-status></app-server-status>
+</footer>

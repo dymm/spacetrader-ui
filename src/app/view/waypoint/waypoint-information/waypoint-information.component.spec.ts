@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgentLoginComponent } from './agent-login.component';
+import { WaypointListComponent } from './waypoint-information.component';
 
-describe('AgentStatusComponent', () => {
-  let component: AgentLoginComponent;
-  let fixture: ComponentFixture<AgentLoginComponent>;
+describe('WaypointInformationComponent', () => {
+  let component: WaypointListComponent;
+  let fixture: ComponentFixture<WaypointListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgentLoginComponent ]
+      declarations: [ WaypointListComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AgentLoginComponent);
+    fixture = TestBed.createComponent(WaypointListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
