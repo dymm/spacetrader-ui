@@ -1,0 +1,9 @@
+<div *ngIf="agent; else tokenNotSet">
+    Connected as {{agent.accountId}}
+</div>
+<ng-template #tokenNotSet>
+    <label for="agentName">Agent Name:</label>
+    <input type="text" #agentToken>
+    <button (click)="submit(agentToken.value)" #submitButton>Submit</button>
+</ng-template
+>
