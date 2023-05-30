@@ -1,0 +1,22 @@
+
+<div *ngIf="waypoint; else noWaypoint">
+    <span>Waypoint {{waypoint.symbol}}</span>
+    <span>Type {{waypoint.type}}</span>
+    <span *ngIf="waypoint.faction">Faction {{waypoint.faction.symbol}}</span>
+    <div *ngFor="let orbital of waypoint.orbitals">
+        <span>System {{orbital.symbol}}</span>
+    </div>
+    <div *ngFor="let trait of waypoint.traits">
+        <span>symbol {{trait.symbol}}</span>
+        <span>name {{trait.name}}</span>
+        <span>description {{trait.description}}</span>
+    </div>
+    <div>
+        <span>waypointSymbol {{waypoint.chart?.waypointSymbol}}</span>
+        <span>submittedBy {{waypoint.chart?.submittedBy}}</span>
+        <span>submittedOn {{waypoint.chart?.submittedOn}}</span>
+    </div>
+</div>
+<ng-template #noWaypoint>
+    <span>No waypoint selected</span>
+</ng-template>
