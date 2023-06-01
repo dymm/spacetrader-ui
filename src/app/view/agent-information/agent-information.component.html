@@ -3,8 +3,12 @@
     <div>Credits: {{agent.credits}}</div>
 </div>
 <ng-template #tokenNotSet>
-    <label for="agentName">Agent Name:</label>
-    <input type="text" #agentToken>
-    <button (click)="submit(agentToken.value)" #submitButton>Submit</button>
+    <mat-form-field>
+        <mat-label>Agent token</mat-label>
+        <input matInput placeholder="token" #agentToken>
+    </mat-form-field>
+    <button mat-flat-button color="primary" 
+    (click)="submit(agentToken.value)"
+    #submitButton>Submit</button>
 </ng-template
 >

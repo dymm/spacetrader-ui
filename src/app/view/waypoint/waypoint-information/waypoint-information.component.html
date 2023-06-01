@@ -1,16 +1,18 @@
-
 <div *ngIf="waypoint; else noWaypoint">
-    <span>Waypoint {{waypoint.symbol}}</span>
     <span>Type {{waypoint.type}}</span>
     <span *ngIf="waypoint.faction">Faction {{waypoint.faction.symbol}}</span>
     <div *ngFor="let orbital of waypoint.orbitals">
         <span>System {{orbital.symbol}}</span>
     </div>
-    <div *ngFor="let trait of waypoint.traits">
-        <span>symbol {{trait.symbol}}</span>
-        <span>name {{trait.name}}</span>
-        <span>description {{trait.description}}</span>
-    </div>
+    <mat-chip-set>
+        <mat-chip
+        *ngFor="let trait of waypoint.traits"
+        matTooltip="{{trait.description}}">
+        <!-- Use trait.symbol to display an icon -->
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="{{getTraitIcon(trait.symbol)}}"></mat-icon>
+            {{trait.name}}
+        </mat-chip>
+    </mat-chip-set>
     <div>
         <span>waypointSymbol {{waypoint.chart?.waypointSymbol}}</span>
         <span>submittedBy {{waypoint.chart?.submittedBy}}</span>
