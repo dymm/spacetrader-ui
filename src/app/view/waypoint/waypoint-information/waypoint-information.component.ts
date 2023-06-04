@@ -1,15 +1,33 @@
-import { Component, Input } from '@angular/core';
-import { Waypoint, WaypointTrait } from 'spacetraders-angular-client';
+import { Component, Input, OnInit } from '@angular/core';
+import { WaypointDataService } from '@base/services/waypoint-data.service';
+import { Market, Waypoint, WaypointTrait } from 'spacetraders-angular-client';
 
 @Component({
   selector: 'app-waypoint-information',
   templateUrl: './waypoint-information.component.html',
   styleUrls: ['./waypoint-information.component.css']
 })
-export class WaypointInformationComponent {
+export class WaypointInformationComponent implements OnInit {
 
   @Input()
+  header = false;
+  @Input()
   waypoint!: Waypoint;
+  market: Market | undefined;
+
+  constructor(
+    private waypointDataService: WaypointDataService,
+  ) {}
+
+  ngOnInit(): void {
+    this.waypointDataService.getMarket(this.waypoint.symbol)
+    .subscribe({
+      next: (market) => {
+        this.market = market;
+      }
+    });
+  }
+
 
   /**
    * Get the trait icon name

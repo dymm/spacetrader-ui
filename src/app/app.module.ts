@@ -11,8 +11,9 @@ import { AuthorizationBearerHeaderInterceptor } from '@base/interceptors/bearer-
 import { SystemInformationComponent } from './view/system-information/system-information.component';
 import { WaypointListComponent } from './view/waypoint/waypoint-list/waypoint-list.component';
 import { WaypointInformationComponent } from './view/waypoint/waypoint-information/waypoint-information.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MarketInformationComponent } from './view/waypoint/market-information/market-information.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -22,6 +23,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ServerStatusComponent,
     SystemInformationComponent,
     WaypointInformationComponent,
-    WaypointListComponent
+    WaypointListComponent,
+    MarketInformationComponent
   ],
   imports: [
     SpaceTradersApiModule,
@@ -43,7 +48,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatCardModule,
     MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule,
     MatTableModule, MatPaginatorModule,
-    MatChipsModule, MatTooltipModule
+    MatChipsModule, MatTooltipModule,
+    MatTabsModule, MatListModule, MatBadgeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

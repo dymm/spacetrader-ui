@@ -1,0 +1,60 @@
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab [disabled]="!market.exports.length">
+        <ng-template mat-tab-label>
+            <span matBadge="{{market.exports.length}}" matBadgeOverlap="false" [matBadgeColor]="market.exports.length ? 'primary' : 'warn'">
+                Exports
+            </span>
+        </ng-template>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let export of market.exports"><span  matTooltip="{{export.description}}">{{export.name}}</span></mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab [disabled]="!market.imports.length">
+        <ng-template mat-tab-label>
+            <span matBadge="{{market.imports.length}}" matBadgeOverlap="false" [matBadgeColor]="market.imports.length ? 'primary' : 'warn'">
+                Imports
+            </span>
+        </ng-template>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let import of market.imports"><span  matTooltip="{{import.description}}">{{import.name}}</span></mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab [disabled]="!market.exchange.length">
+        <ng-template mat-tab-label>
+            <span matBadge="{{market.exchange.length}}" matBadgeOverlap="false" [matBadgeColor]="market.exchange.length ? 'primary' : 'warn'">
+                Exchange
+            </span>
+        </ng-template>
+        <mat-list role="list" *ngIf="market.exchange.length">
+            <mat-list-item role="listitem" *ngFor="let ex of market.exchange"><span  matTooltip="{{ex.description}}">{{ex.name}}</span></mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab [disabled]="!market.transactions" label="Transactions">
+        <span>To be implemented as list</span>
+    </mat-tab>
+    <mat-tab [disabled]="!market.tradeGoods" label="Trade Goods">
+        <span>To be implemented as list</span>
+    </mat-tab>
+  </mat-tab-group>
+
+<!--
+    Display the market information for the current waypoint in this html page.	
+exports: Array<TradeGood>;
+    /**
+     * The list of goods that are sought as imports in this market.
+     */
+    imports: Array<TradeGood>;
+    /**
+     * The list of goods that are bought and sold between agents at this market.
+     */
+    exchange: Array<TradeGood>;
+    /**
+     * The list of recent transactions at this market. Visible only when a ship is present at the market.
+     */
+    transactions?: Array<MarketTransaction>;
+    /**
+     * The list of goods that are traded at this market. Visible only when a ship is present at the market.
+     */
+    tradeGoods?: Array<MarketTradeGood>;
+-->
