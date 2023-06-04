@@ -12,6 +12,7 @@ import { SystemInformationComponent } from './view/system-information/system-inf
 import { WaypointListComponent } from './view/waypoint/waypoint-list/waypoint-list.component';
 import { WaypointInformationComponent } from './view/waypoint/waypoint-information/waypoint-information.component';
 import { MarketInformationComponent } from './view/waypoint/market-information/market-information.component';
+import { TradegoodsListComponent } from './view/common/tradegoods-list/tradegoods-list.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
@@ -35,7 +36,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     SystemInformationComponent,
     WaypointInformationComponent,
     WaypointListComponent,
-    MarketInformationComponent
+    MarketInformationComponent,
+    TradegoodsListComponent,
   ],
   imports: [
     SpaceTradersApiModule,
