@@ -28,6 +28,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ShipListComponent } from './view/ship/ship-list/ship-list.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MarketInformationComponent,
     TradegoodsListComponent,
     MarketTransactionListComponent,
+    ShipListComponent,
   ],
   imports: [
     SpaceTradersApiModule,

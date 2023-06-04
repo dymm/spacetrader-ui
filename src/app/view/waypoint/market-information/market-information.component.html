@@ -24,10 +24,10 @@
         </ng-template>
         <app-tradegoods-list [elements]="market.exchange"></app-tradegoods-list>
     </mat-tab>
-    <mat-tab [disabled]="!market.transactions?.length" label="Transactions">
+    <mat-tab [disabled]="market.transactions && market.transactions.length > 0" label="Transactions">
         <app-market-transaction-list *ngIf="market.transactions" [transactions]="market.transactions"></app-market-transaction-list>
     </mat-tab>
-    <mat-tab [disabled]="!market.tradeGoods?.length" label="Trade Goods">
+    <mat-tab [disabled]="market.tradeGoods && market.tradeGoods.length > 0" label="Trade Goods">
         <span>To be implemented as list</span>
     </mat-tab>
   </mat-tab-group>
