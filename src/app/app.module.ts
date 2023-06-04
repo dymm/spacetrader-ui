@@ -13,6 +13,7 @@ import { WaypointListComponent } from './view/waypoint/waypoint-list/waypoint-li
 import { WaypointInformationComponent } from './view/waypoint/waypoint-information/waypoint-information.component';
 import { MarketInformationComponent } from './view/waypoint/market-information/market-information.component';
 import { TradegoodsListComponent } from './view/common/tradegoods-list/tradegoods-list.component';
+import { MarketTransactionListComponent } from './view/common/market-transaction-list/market-transaction-list.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
@@ -27,7 +28,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
-import { MarketTransactionListComponent } from './view/common/market-transaction-list/market-transaction-list.component';
 
 @NgModule({
   declarations: [

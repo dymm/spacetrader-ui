@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MarketTransaction } from 'spacetraders-angular-client';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './market-transaction-list.component.html',
   styleUrls: ['./market-transaction-list.component.css']
 })
-export class MarketTransactionListComponent implements OnInit, AfterViewInit {
+export class MarketTransactionListComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -19,9 +19,6 @@ export class MarketTransactionListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<MarketTransaction>(this.transactions);
   pageSize = 5;
   pageIndex = 0;
-
-  ngOnInit() {
-  }
 
   ngAfterViewInit() {
     if(!this.paginator) {
@@ -34,5 +31,4 @@ export class MarketTransactionListComponent implements OnInit, AfterViewInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
   }
-}
 }
