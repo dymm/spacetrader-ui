@@ -25,7 +25,7 @@
         <app-tradegoods-list [elements]="market.exchange"></app-tradegoods-list>
     </mat-tab>
     <mat-tab [disabled]="!market.transactions" label="Transactions">
-        <span>To be implemented as list</span>
+        <app-market-transactions *ngIf="market.transactions" [transactions]="market.transactions"></app-market-transactions>
     </mat-tab>
     <mat-tab [disabled]="!market.tradeGoods" label="Trade Goods">
         <span>To be implemented as list</span>

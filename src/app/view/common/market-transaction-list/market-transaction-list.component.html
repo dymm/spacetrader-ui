@@ -1,0 +1,80 @@
+<!-- Use a Angular element mat-table to create a list of elemnents that contains the following informations 
+    /**
+     * The symbol of the ship that made the transaction.
+     */
+    shipSymbol: string;
+    /**
+     * The symbol of the trade good.
+     */
+    tradeSymbol: string;
+    /**
+     * The type of transaction.
+     */
+    type: MarketTransaction.TypeEnum;
+    /**
+     * The number of units of the transaction.
+     */
+    units: number;
+    /**
+     * The price per unit of the transaction.
+     */
+    pricePerUnit: number;
+    /**
+     * The total price of the transaction.
+     */
+    totalPrice: number;
+    /**
+     * The timestamp of the transaction.
+     */
+    timestamp: string;
+-->
+<mat-table [dataSource]="dataSource" matSort>
+
+  <!-- Ship Symbol Column -->
+  <ng-container matColumnDef="shipSymbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ship Symbol</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.shipSymbol }}</td>
+  </ng-container>
+
+  <!-- Trade Symbol Column -->
+  <ng-container matColumnDef="tradeSymbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Trade Symbol</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.tradeSymbol }}</td>
+  </ng-container>
+
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.type }}</td>
+  </ng-container>
+
+  <!-- Units Column -->
+  <ng-container matColumnDef="units">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Units</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.units }}</td>
+  </ng-container>
+
+  <!-- Price Per Unit Column -->
+  <ng-container matColumnDef="pricePerUnit">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Price Per Unit</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.pricePerUnit }}</td>
+  </ng-container>
+
+  <!-- Total Price Column -->
+  <ng-container matColumnDef="totalPrice">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Price</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.totalPrice }}</td>
+  </ng-container>
+
+  <!-- Timestamp Column -->
+  <ng-container matColumnDef="timestamp">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Timestamp</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.timestamp }}</td>
+  </ng-container>
+
+  <!-- Column definitions -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="dataSource.data.length" (page)="onPageChange($event)"></mat-paginator>
