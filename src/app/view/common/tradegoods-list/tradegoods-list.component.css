@@ -1,0 +1,18 @@
+/* If the screen size if less than 900px then apply those styles */
+@media only screen and (max-width: 900px) {
+    mat-list-item {
+        width: 50%;
+    }
+}
+
+/* or if the sceen size is more than 900px then apply those styles */
+@media only screen and (min-width: 900px) {
+    mat-list-item {
+        width: 33%;
+    }
+}
+
+mat-list {
+    display: flex;
+    flex-wrap: wrap;
+}

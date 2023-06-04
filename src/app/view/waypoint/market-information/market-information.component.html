@@ -6,9 +6,7 @@
                 Exports
             </span>
         </ng-template>
-        <mat-list role="list">
-            <mat-list-item role="listitem" *ngFor="let export of market.exports"><span  matTooltip="{{export.description}}">{{export.name}}</span></mat-list-item>
-        </mat-list>
+        <app-tradegoods-list [elements]="market.exports"></app-tradegoods-list>
     </mat-tab>
     <mat-tab [disabled]="!market.imports.length">
         <ng-template mat-tab-label>
@@ -16,9 +14,7 @@
                 Imports
             </span>
         </ng-template>
-        <mat-list role="list">
-            <mat-list-item role="listitem" *ngFor="let import of market.imports"><span  matTooltip="{{import.description}}">{{import.name}}</span></mat-list-item>
-        </mat-list>
+        <app-tradegoods-list [elements]="market.imports"></app-tradegoods-list>
     </mat-tab>
     <mat-tab [disabled]="!market.exchange.length">
         <ng-template mat-tab-label>
@@ -26,9 +22,7 @@
                 Exchange
             </span>
         </ng-template>
-        <mat-list role="list" *ngIf="market.exchange.length">
-            <mat-list-item role="listitem" *ngFor="let ex of market.exchange"><span  matTooltip="{{ex.description}}">{{ex.name}}</span></mat-list-item>
-        </mat-list>
+        <app-tradegoods-list [elements]="market.exchange"></app-tradegoods-list>
     </mat-tab>
     <mat-tab [disabled]="!market.transactions" label="Transactions">
         <span>To be implemented as list</span>
