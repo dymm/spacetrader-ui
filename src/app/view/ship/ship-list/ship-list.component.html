@@ -1,1 +1,115 @@
-<p>ship-list works!</p>
+<mat-table mat-table [dataSource]="dataSource">
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <mat-header-cell *matHeaderCellDef>Symbol</mat-header-cell>
+    <mat-cell *matCellDef="let ship">{{ ship.symbol }}</mat-cell>
+  </ng-container>
+
+  <!-- Symbol Role -->
+  <ng-container matColumnDef="role">
+    <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+    <mat-cell *matCellDef="let ship">{{ ship.registration.role }}</mat-cell>
+  </ng-container>
+
+  <!-- Waypoint Symbol Column -->
+  <ng-container matColumnDef="waypointSymbol">
+    <mat-header-cell *matHeaderCellDef>Waypoint Symbol</mat-header-cell>
+    <mat-cell *matCellDef="let ship">{{ ship.nav.waypointSymbol }}</mat-cell>
+  </ng-container>
+
+  <!-- Destination and Arrival Column -->
+  <ng-container matColumnDef="destination">
+    <mat-header-cell *matHeaderCellDef>Destination / arrival</mat-header-cell>
+    <mat-cell *matCellDef="let ship">
+        <span *ngIf="ship.nav.status !== 'DOCKED'; else shipDocked">{{ship.nav.route.destination.symbol}} / {{ship.nav.route.arrival | date:'medium'}}</span>
+        <ng-template #shipDocked><span>{{ship.nav.status}}</span></ng-template>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Current Fuel Column -->
+  <ng-container matColumnDef="fuel">
+    <mat-header-cell *matHeaderCellDef>Fuel</mat-header-cell>
+    <mat-cell *matCellDef="let ship">{{ship.fuel.current}}  / {{ship.fuel.capacity}}</mat-cell>
+  </ng-container>
+
+  <!-- Cargo Capacity Column -->
+  <ng-container matColumnDef="cargoCapacity">
+    <mat-header-cell *matHeaderCellDef>Cargo Capacity</mat-header-cell>
+    <mat-cell *matCellDef="let ship">{{ship.cargo.capacity}} / {{ship.cargo.units}}</mat-cell>
+  </ng-container>
+
+  <!-- Add columns to the table -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+<mat-paginator [pageIndex]="1" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+<!--
+Given the interfaces :
+export interface Ship {
+    /**
+     * The globally unique identifier of the ship in the following format: `[AGENT_SYMBOL]_[HEX_ID]`
+     */
+    symbol: string;
+    registration: ShipRegistration;
+    nav: ShipNav;
+    crew: ShipCrew;
+    frame: ShipFrame;
+    reactor: ShipReactor;
+    engine: ShipEngine;
+    modules: Array<ShipModule>;
+    mounts: Array<ShipMount>;
+    cargo: ShipCargo;
+    fuel: ShipFuel;
+}
+export interface ShipNav {
+    /**
+     * The waypoint symbol of the ship\'s current location, or if the ship is in-transit, the waypoint symbol of the ship\'s destination.
+     */
+    waypointSymbol: string;
+    route: ShipNavRoute;
+    status: ShipNavStatus;
+    flightMode: ShipNavFlightMode;
+}
+export interface ShipNavRoute {
+    destination: ShipNavRouteWaypoint;
+    /**
+     * The date time of the ship\'s arrival. If the ship is in-transit, this is the expected time of arrival.
+     */
+    arrival: string;
+}
+
+export interface ShipFuel {
+    /**
+     * The current amount of fuel in the ship\'s tanks.
+     */
+    current: number;
+    /**
+     * The maximum amount of fuel the ship\'s tanks can hold.
+     */
+    capacity: number;
+}
+export interface ShipCargo {
+    /**
+     * The max number of items that can be stored in the cargo hold.
+     */
+    capacity: number;
+    /**
+     * The number of items currently stored in the cargo hold.
+     */
+    units: number;
+}
+Create a angular material list with the following columns:
+- Symbol
+- Registration
+- Waypoint Symbol
+- Destination
+- The date time of the ship\'s arrival
+- Current Fuel
+- Fuel Capacity
+- Cargo Capacity
+- Cargo Units
+
+The list should be sorted by the date time of the ship\'s arrival in ascending order.
+-->

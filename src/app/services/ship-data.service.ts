@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, switchMap, throwError } from 'rxjs';
 import { FleetService, Ship } from 'spacetraders-angular-client';
+import { AgentDataService } from './agent-data-service.service';
 
 export interface Meta {
   total: number;
@@ -20,7 +21,9 @@ export class ShipDataService {
 
   constructor(
     private fleetService: FleetService,
-  ) { }
+  ) {
+
+  }
 
   /**
    * List Ships
