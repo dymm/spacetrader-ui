@@ -14,6 +14,8 @@ import { WaypointInformationComponent } from './view/waypoint/waypoint-informati
 import { MarketInformationComponent } from './view/waypoint/market-information/market-information.component';
 import { TradegoodsListComponent } from './view/common/tradegoods-list/tradegoods-list.component';
 import { MarketTransactionListComponent } from './view/common/market-transaction-list/market-transaction-list.component';
+import { ShipListComponent } from './view/ship/ship-list/ship-list.component';
+import { MainViewComponent } from './view/main-view/main-view.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
@@ -28,7 +30,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
-import { ShipListComponent } from './view/ship/ship-list/ship-list.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,7 @@ import { ShipListComponent } from './view/ship/ship-list/ship-list.component';
     TradegoodsListComponent,
     MarketTransactionListComponent,
     ShipListComponent,
+    MainViewComponent,
   ],
   imports: [
     SpaceTradersApiModule,
@@ -55,7 +61,9 @@ import { ShipListComponent } from './view/ship/ship-list/ship-list.component';
     MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule,
     MatTableModule, MatPaginatorModule,
     MatChipsModule, MatTooltipModule,
-    MatTabsModule, MatListModule, MatBadgeModule
+    MatTabsModule, MatListModule, MatBadgeModule,
+    MatSidenavModule,MatMenuModule,MatToolbarModule,
+    MatGridListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
+        <mat-list-item routerLink="#" >
+            <div (click)="toggleDashboard()">
+                <mat-icon>dashboard</mat-icon>
+                <span>System</span>
+            </div>
+        </mat-list-item>
+        <mat-list-item routerLink="#">
+            <div (click)="toggleShipList()">
+                <mat-icon>rocket</mat-icon>
+                <span>Ship list</span>
+            </div>
+        </mat-list-item>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-grid-list cols="1">
+            <mat-grid-tile *ngIf="displaySystem">
+                <app-system-information class="expand"></app-system-information>
+            </mat-grid-tile>
+            <mat-grid-tile *ngIf="displayShipList">
+                <app-ship-list class="expand"></app-ship-list>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-sidenav-content>
+</mat-sidenav-container>
