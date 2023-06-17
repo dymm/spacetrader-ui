@@ -20,7 +20,7 @@
                     <span>submitted on {{waypoint.chart?.submittedOn | date:'medium' }}</span>
                 </div>
             </mat-tab>
-            <mat-tab [disabled]="!market" label="Market">
+           <mat-tab [disabled]="!market" label="Market">
                 <app-market-information *ngIf="market" [market]="market"></app-market-information>
             </mat-tab>
         </mat-tab-group>

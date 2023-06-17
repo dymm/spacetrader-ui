@@ -5,14 +5,14 @@
 </mat-toolbar>
 <mat-sidenav-container class="app-container">
     <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
-        <mat-list-item routerLink="#" >
-            <div (click)="toggleDashboard()">
+        <mat-list-item routerLink="#">
+            <div (click)="toggleDashboard()" class="icon-line" [ngClass]="displaySystem ? 'selected' : 'not-selected'">
                 <mat-icon>dashboard</mat-icon>
                 <span>System</span>
             </div>
         </mat-list-item>
         <mat-list-item routerLink="#">
-            <div (click)="toggleShipList()">
+            <div (click)="toggleShipList()" class="icon-line" [ngClass]="displayShipList ? 'selected' : 'not-selected'">
                 <mat-icon>rocket</mat-icon>
                 <span>Ship list</span>
             </div>

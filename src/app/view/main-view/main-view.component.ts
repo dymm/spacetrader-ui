@@ -7,17 +7,23 @@ import { Component } from '@angular/core';
 })
 export class MainViewComponent {
 
-  displaySystem = false;
+  displaySystem = true;
   displayShipList = false;
 
   toggleDashboard() {
-    console.log('showDashboard()');
-    this.displaySystem = !this.displaySystem;
+    if(this.displaySystem) {
+      return;
+    }
+    this.displayShipList = false;
+    this.displaySystem = true;
   }
 
   toggleShipList() {
-    console.log('showShipList()');
-    this.displayShipList = !this.displayShipList;
+    if(this.displayShipList) {
+      return;
+    }
+    this.displaySystem = false;
+    this.displayShipList = true;
   }
     
 }
