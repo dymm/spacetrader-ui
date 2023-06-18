@@ -32,10 +32,5 @@ export class AgentInformationComponent implements OnInit {
         }
       });
     }
-
-    submit(token: string) {
-      console.log('Submit token', token);
-      this.agentDataService.setAgentToken(token);
-    }
 }
 

@@ -1,7 +1,13 @@
 <header>
     <app-agent-information></app-agent-information>
 </header>
-<app-main-view *ngIf="agent"></app-main-view>
+
+<div *ngIf="agent; else loginView">
+    <app-main-view></app-main-view>
+</div>
+<ng-template #loginView>
+    <app-login-view></app-login-view>
+</ng-template>
 
 <footer>
     <app-server-status></app-server-status>

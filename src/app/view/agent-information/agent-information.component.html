@@ -1,14 +1,4 @@
-<div *ngIf="agent; else tokenNotSet">
-    <div>Connected as {{agent.symbol}}</div>
-    <div>Credits: {{agent.credits}}</div>
+<div *ngIf="agent">
+    <span>Connected as {{agent.symbol}}</span>
+    <span>Credits: {{agent.credits}}</span>
 </div>
-<ng-template #tokenNotSet>
-    <mat-form-field>
-        <mat-label>Agent token</mat-label>
-        <input matInput placeholder="token" #agentToken>
-    </mat-form-field>
-    <button mat-flat-button color="primary" 
-    (click)="submit(agentToken.value)"
-    #submitButton>Submit</button>
-</ng-template
->
