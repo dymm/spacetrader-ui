@@ -1,0 +1,54 @@
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab [disabled]="!market.exports.length">
+        <ng-template mat-tab-label>
+            <span matBadge="{{market.exports.length}}" matBadgeOverlap="false" [matBadgeColor]="market.exports.length ? 'primary' : 'warn'">
+                Exports
+            </span>
+        </ng-template>
+        <app-tradegoods-list [elements]="market.exports"></app-tradegoods-list>
+    </mat-tab>
+    <mat-tab [disabled]="!market.imports.length">
+        <ng-template mat-tab-label>
+            <span matBadge="{{market.imports.length}}" matBadgeOverlap="false" [matBadgeColor]="market.imports.length ? 'primary' : 'warn'">
+                Imports
+            </span>
+        </ng-template>
+        <app-tradegoods-list [elements]="market.imports"></app-tradegoods-list>
+    </mat-tab>
+    <mat-tab [disabled]="!market.exchange.length">
+        <ng-template mat-tab-label>
+            <span matBadge="{{market.exchange.length}}" matBadgeOverlap="false" [matBadgeColor]="market.exchange.length ? 'primary' : 'warn'">
+                Exchange
+            </span>
+        </ng-template>
+        <app-tradegoods-list [elements]="market.exchange"></app-tradegoods-list>
+    </mat-tab>
+    <mat-tab [disabled]="market.transactions && market.transactions.length > 0" label="Transactions">
+        <app-market-transaction-list *ngIf="market.transactions" [transactions]="market.transactions"></app-market-transaction-list>
+    </mat-tab>
+    <mat-tab [disabled]="market.tradeGoods && market.tradeGoods.length > 0" label="Trade Goods">
+        <span>To be implemented as list</span>
+    </mat-tab>
+  </mat-tab-group>
+
+<!--
+    Display the market information for the current waypoint in this html page.	
+exports: Array<TradeGood>;
+    /**
+     * The list of goods that are sought as imports in this market.
+     */
+    imports: Array<TradeGood>;
+    /**
+     * The list of goods that are bought and sold between agents at this market.
+     */
+    exchange: Array<TradeGood>;
+    /**
+     * The list of recent transactions at this market. Visible only when a ship is present at the market.
+     */
+    transactions?: Array<MarketTransaction>;
+    /**
+     * The list of goods that are traded at this market. Visible only when a ship is present at the market.
+     */
+    tradeGoods?: Array<MarketTradeGood>;
+-->

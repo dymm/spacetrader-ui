@@ -1,0 +1,36 @@
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+.app-container {
+    height: 90%;
+    margin: 0;
+}  
+.app-sidenav {
+    width: 9em;
+}
+.expand {
+    align-self: start;
+    width: 100%;
+}
+
+.icon-line {
+    margin-top: 0.5em;
+    height: 1em;
+    border-radius: 10px;
+    background: #4f31d450;
+    padding: 15px;
+    border: 1px solid #0300af;
+}
+
+.icon-line mat-icon,
+.icon-line span {
+    vertical-align: middle;
+}
+
+.selected {
+    background-color: #e0e0e0;
+}
+.not-selected {
+    background-color: #ffffff;
+}

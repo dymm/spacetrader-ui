@@ -1,11 +1,7 @@
 <header>
     <app-agent-information></app-agent-information>
 </header>
-
-<div *ngIf="agent">
-    <app-system-information></app-system-information>
-    <app-waypoint-list [location]="agent.headquarters"></app-waypoint-list>
-</div>
+<app-main-view *ngIf="agent"></app-main-view>
 
 <footer>
     <app-server-status></app-server-status>
