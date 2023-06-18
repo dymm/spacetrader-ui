@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AgentInformationComponent } from '@base/view/agent-information/agent-information.component';
@@ -34,6 +34,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { LoginViewComponent } from './login/login-view/login-view.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MarketTransactionListComponent,
     ShipListComponent,
     MainViewComponent,
+    LoginViewComponent,
   ],
   imports: [
     SpaceTradersApiModule,
@@ -55,7 +57,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     // see https://github.com/angular/angular/issues/20575
     HttpClientModule,
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule,
